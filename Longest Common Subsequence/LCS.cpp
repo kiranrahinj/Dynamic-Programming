@@ -7,15 +7,15 @@ int rec(string s1,string s2,int n,int m){
 	if(n==0 || m==0)return 0;
 
 	if(s1[n-1]==s2[m-1]){
-		return 1+ rec(s1,s2,n-1,n-1);
+		return 1+ rec(s1,s2,n-1,m-1);
 	}
 	else
 		return max(rec(s1,s2,n-1,m), rec(s1,s2,n,m-1));
 }
 
 int main(){
-	string s1="abcdf";
-	string s2="abceg";
+	string s1="abcefg";
+	string s2="adcefhbcefg";
 	int n=s1.size(),m=s2.size();		
 	cout<<rec(s1,s2,n,m)<<endl;
 
