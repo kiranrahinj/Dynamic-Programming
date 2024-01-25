@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-1. //This is the recursive solution
+// 1. //This is the recursive solution
 int knapsack(int wt[],int val[],int w,int n){
 	//base condition
 	if(n==0 || w==0)return 0; 
@@ -15,9 +15,9 @@ int knapsack(int wt[],int val[],int w,int n){
 	}
 }
 
-2. //Memoization of above code, We are adding only 3 lines in it.
-int t[n+1][w+1];
-memset(t,-1,sizeOf(t));
+// 2. //Memoization of above code, We are adding only 3 lines in it.
+// int t[n+1][w+1];
+// memset(t,-1,sizeOf(t));
 
 int knapsack(int wt[],int val[],int w,int n){
 	//base condition
@@ -37,9 +37,12 @@ int knapsack(int wt[],int val[],int w,int n){
 
 int main(){
 	
-3. //Top Down approach, Most .In this are removing recursion.
+	int val[] = { 60, 100, 120 };
+    int wt[] = { 10, 20, 30 };
+    int w = 50;
+    int n = sizeof(val) / sizeof(val[0]);
+// 3. //Top Down approach, Most .In this are removing recursion.
 	int t[n+1][w+1];
-	int val[],wt[];
 
 	//filling base condition
 	for(int i=0;i<n+1;i++){
@@ -59,6 +62,24 @@ int main(){
 			}
 		}
 	}
-	cout<<t[n][w]; //here will be the last answer
-	
+	cout<<t[n][w]<<endl; //here will be the last answer
+
+
+	///Printing of the wt and val is taken for it;
+
+	int i=n ,res=t[n][w];
+
+	while(i>0 && res>0){
+		if(t[i-1][w]==res){
+			i--;
+			continue;
+		}
+		else{
+			cout<<wt[i-1]<<" "<<val[i-1]<<endl;
+
+			w=w-wt[i-1];
+			res=res-val[i-1];
+		}
+		i--;
+	}
 }
